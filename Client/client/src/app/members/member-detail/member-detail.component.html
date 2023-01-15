@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-4">
+        <div class="card">
+            <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.username}}"
+                class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <div>
+                    <strong>Lokalizacja:</strong>
+                    <p>{{member.city}}, {{member.country}}</p>
+                </div>
+                <div>
+                    <strong>Wiek:</strong>
+                    <p>{{member.age}}</p>
+                </div>
+                <div>
+                    <strong>Użytkownik od:</strong>
+                    <p>{{member.createdDate | date:"dd/MM/yyyy"}} </p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button (click)="selectTab('Wiadomości')" class="btn btn-success">Wiadomości</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-8">
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading="Zainteresowania" (selectTab)="onTabActivated($event)">
+                <h4>Zainteresowania:</h4>
+                <p>{{member.interests}}</p>
+            </tab>
+            <tab heading="Wiadomości" (selectTab)="onTabActivated($event)">
+                <app-member-messages [messages]="messages" [username]="member.username"></app-member-messages>
+            </tab>
+        </tabset>
+    </div>
+</div>

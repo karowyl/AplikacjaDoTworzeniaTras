@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+
+      <ul class="navbar-nav mr-auto" *ngIf="(accountService.currentUser$ | async) as user">
+          <ng-container>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink='/maps' routerLinkActive='active' >Mapa tras</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink='/messages'routerLinkActive='active' >Wiadomości</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink='/members'routerLinkActive='active' >Użytkownicy</a>
+            </li>
+          </ng-container>
+          <!-- <li class="nav-item">
+            <a class="nav-link" routerLink='/errors' routerLinkActive='active' >Błędy</a>
+        </li> -->
+      </ul>
+    
+      <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+        <a class="dropdown-toggle text-light" dropdownToggle>Cześć {{user.username | titlecase}}</a>
+        <div class="dropdown-menu mt-3" *dropdownMenu>
+            <a class="dropdown-item"  routerLink='/member/edit'>Edytuj profil</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()" >Wyloguj</a>
+        </div>
+    </div>
+
+    <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" class="d-flex mt- mt-md-0" style="margin-left:auto;" (ngSubmit)="login()" 
+        autocomplete="off">
+        <input 
+            name="username"
+            [(ngModel)]="model.username"
+            class="form-control me-sm-2" 
+            type="text" 
+            placeholder="Nazwa użytkownika">
+        <input 
+            name="password"
+            [(ngModel)]="model.password"
+            class="form-control me-sm-2" 
+            type="password" 
+            placeholder="Hasło">
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Zaloguj</button>
+    </form>
+</div>
+
+</nav>

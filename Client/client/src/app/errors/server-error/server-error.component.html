@@ -1,0 +1,17 @@
+<h4>Wewnętrzny błąd serwera - odświeżenie strony spowoduje zniknięcie błędu!</h4>
+<ng-container *ngIf="error">
+    <h5 class='text-danger'>Błąd: {{error.message}}</h5>
+    <p class="font-weight-bold">Uwaga: Jeśli to widzisz, Angular prawdopodobnie nie jest niczemu winny</p>
+    <p>Co zrobić nastepnie?</p>
+    <ol>
+        <li>Otwórz narzędzia deweloperskie Chrome</li>
+        <li>Sprawdź kartę sieci</li>
+        <li>Sprawdź żądanie zakończone niepowodzeniem</li>
+        <li>Sprawdź adres URL żądania — upewnij się, że jest poprawny</li>
+        <li>Odtwórz błąd w Postmanie - jeśli widzimy tę samą odpowiedź, problem nie dotyczy Angulara</li>
+    </ol>
+    <p>Poniżej znajduje się błąd — od tego należy rozpocząć dochodzenie!</p>
+    <code class="mt-5" style="background-color: whitesmoke;">{{error.details}}</code>
+</ng-container>
+
+

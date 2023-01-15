@@ -1,0 +1,42 @@
+<form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+    <h2 class = "text-center text-primary">Zarejestruj się</h2>
+    <hr>
+    <div class="mb-3">
+        <input type="text" class="form-control" name="username"
+        [(ngModel)]="model.username" placeholder="Nazwa użytkownika">
+    </div>
+    <div class="mb-3">
+        <input type="text" class="form-control" name="city"
+        [(ngModel)]="model.city" placeholder="Miasto">
+    </div>
+    <div class="mb-3">
+        <select name="country" [(ngModel)]="model.country" class="form-select">
+            <option value="Polska">Polska</option>
+            <option value="Niemcy">Niemcy</option>
+            <option value="Hiszpania">Hiszpania</option>
+            <option value="Czechy">Czechy</option>
+            <option value="Austria">Austria</option>
+            <option value="Dania">Dania</option>
+            <option value="Ukraina">Ukraina</option>
+            <option value="Portugalia">Portugalia</option>
+            <option value="Anglia">Anglia</option>
+            <option value="Szwajcaria">Szwajcaria</option>
+            <option value="Litwa">Litwa</option>
+            <option value="Łotwa">Łotwa</option>
+            <option value="Rosja">Rosja</option>
+            <option value="Słowacja">Słowacja</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <input type="password" class="form-control" name="password"
+        [(ngModel)]="model.password" placeholder="Hasło">
+    </div>
+    <div class="mb-3">
+        <input type="date" class="form-control" name="dateOfBirth"
+        [(ngModel)]="model.dateOfBirth" placeholder="Data urodzenia">
+    </div>
+    <div class="text-center">
+        <button class="btn btn-success me-2" type="submit">Rejestracja</button>
+        <button class="btn btn-default me-2" type="button" (click)="cancel()">Cofnij</button>
+      </div>
+</form>

@@ -1,0 +1,39 @@
+<tabset class="map-tabset">
+    <tab heading='Użytkownicy'>
+      <form  class="d-flex mt-2 mt-md-0" 
+      autocomplete="off">
+      <input
+          name="search"
+          class="form-control me-sm-2" 
+          type="Search" 
+          placeholder="Szukaj"
+          minlength="3"
+          #membersSearch>
+    </form>
+
+    <ng-container *ngIf="message && message.length > 1">
+        <alert type="info">
+            <strong>Informacja:</strong> {{message}}
+        </alert>
+    </ng-container>
+    
+    <div class="col-md" >
+        <div class="row">
+            <div class="col-2" *ngFor="let member of members">
+                <app-member-card [member]="member" [isFriendTab]="false" (friendAddedEvent)="addToFriendList($event)"></app-member-card>
+            </div>
+        </div>
+    </div>
+
+    </tab>
+    <tab heading='Obserwacje'>
+      <div class="col-md" >
+        <div class="row">
+            <div class="col-2" *ngFor="let friend of friends">
+                <app-member-card [member]="friend" [isFriendTab]="true" (friendRemovedEvent)="removeFromFriendList($event)"></app-member-card>
+            </div>
+        </div>
+      </div>
+    </tab>
+
+
